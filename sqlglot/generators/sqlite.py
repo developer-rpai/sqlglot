@@ -259,9 +259,7 @@ class SQLiteGenerator(generator.Generator):
             this = expression.this
             if isinstance(this, exp.Cast) and this.is_type("date"):
                 this = this.this
-            return self.dateadd_sql(
-                exp.DateAdd(this=this.copy(), expression=interval.copy())
-            )
+            return self.dateadd_sql(exp.DateAdd(this=this.copy(), expression=interval.copy()))
         return super().add_sql(expression)
 
     def cast_sql(self, expression: exp.Cast, safe_prefix: str | None = None) -> str:
